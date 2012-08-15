@@ -79,51 +79,7 @@
 						 
 					</section>
 				</section>
-				<section>
-					<section data-markdown>
-						<h2>Module Writing</h2>
-						<p>CommonJS</p>
-						<ul>
-							<li>Modules are sandboxed</li>
-							<li>Functionality exported through the "exports" object</li>
-							<li>Retrieved by the "required" function</li>
-							<li>Server only?</li>
-						</ul>
-					</section>
-					<section data-markdown>
-						<h2>Module Writing</h2>
-						<p>Asynchronous Module Definition</p>
-						<ul>
-							<li>Declare module dependencies</li>
-							<li>Wait for them to load</li>
-							<li>Fire a callback once they are done</li>
-						</ul>
-							
-							require(['app/myModule'], 
-							    function( myModule ){
-							        // start the main module which in-turn
-							        // loads other modules
-							        var module = new myModule();
-							        module.doStuff();
-							});
-						</code></pre>
-					</section>
-					<section data-markdown>
-						<h2>Module Writing</h2>
-						<p>RequireJS</p>
-						<ul>
-							<li>Take the responsability of JS loading out of the HTML</li>
-							<li>Nested dependencies</li>
-							<li>Optimizes code</li>
-						</ul>
-						
-						 <script data-main="scripts/main" src="scripts/require-jquery.js"></script>
-						 require(["helper/util"], function(util) {
-								util.init();
-
-							});
-					</section>
-				</section>
+				
 				<section>
 					<section>
 					<h2>Javascript performance</h2>
@@ -177,7 +133,7 @@
 							<li>Unified playground for all the discussed technologies</li>
 							<li>Canvas, WebGl</li>
 							<li>Audio</li>
-							<li>RequestAnimationFrame, WebWorkers, API: FullScreen, Point Locker, GamePad</li>
+							<li>RequestAnimationFrame, WebWorkers, API: FullScreen, Point Lock (Exp), GamePad</li>
 							<li>Game engines</li>
 						</ul>
 					</section>
