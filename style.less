@@ -1,0 +1,839 @@
+/* =============================================================================
+   LESS Mixins
+   ========================================================================== */
+   
+.rounded(@radius: 2px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+}
+.opacity(@opacity: 0.5) {
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+}
+.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+.gradient(@start: #EEE, @stop: #FFF) {
+  background: @start;
+  background: -webkit-gradient(linear,
+                               left bottom,
+                               left top,
+                               color-stop(0, @start),
+                               color-stop(1, @stop));
+  background: -ms-linear-gradient(bottom,
+                                  @start,
+                                  @stop);
+  background: -moz-linear-gradient(center bottom,
+                                   @start 0%,
+                                   @stop 100%);
+}
+.horizontal-gradient (@startColor: #eee, @endColor: white) {
+ 	background-color: @startColor;
+	background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+	background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+	background-image: -moz-linear-gradient(left, @startColor, @endColor);
+	background-image: -ms-linear-gradient(left, @startColor, @endColor);
+	background-image: -o-linear-gradient(left, @startColor, @endColor);
+}
+
+.pageWrapper(@width: 1024px){
+	margin: 0 auto;
+	width: @width;
+}
+.horizontalNavigation(@linkHeight: 35px , @linkPadding: 15px){ 
+	li {float: left;
+		a { display: block; padding: 0 @linkPadding; height: @linkHeight; line-height: @linkHeight; }
+	}
+}
+
+/* =============================================================================
+   LESS variables
+   ========================================================================== */
+	/* Color palette */
+	@structure: "../images/structure/";
+	@placeholder: "../images/placeholders/";
+	@element: "../images/elements/";
+	@bodycolor: #333;
+	@linkcolor: #0078BF;
+	@headingcolor: #000;
+	@bodyborder: #D8DDE1; 
+	@errorcolor: #FF3333; 
+	@booked: #0078C0;
+	@confirmed: #004D9D;
+	@collected: #5E4F9C;
+	@delayed: #B32034;
+	@delivered: #EF7D00;
+	@pod: #13A538;
+	
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+    display: block;
+}
+
+
+[hidden] {
+    display: none;
+}
+
+/* =============================================================================
+   General
+   ========================================================================== */
+html, body {margin: 0; padding: 0; }
+   
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+	list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+ 
+body {font-family: Arial, Helvetica, sans-serif; color: @bodycolor; font-size: 14px }
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    color: @headingcolor;
+}
+
+#jobForm h3 {
+	background: #F8FCFE;
+	border-top: 1px solid #D8DDE1;
+	border-bottom: 1px solid #D8DDE1;
+	padding: 15px 0;
+	margin: 0;
+	padding-left: 10px;
+}
+
+h4 {
+    font-size: 16px;
+    color: @headingcolor;
+}
+
+h5 {
+    font-size: 14px;
+    color: @headingcolor;
+}
+
+#userAccount { font-size: 12px;}
+#breadcrumbs { font-size: 12px;}
+#leftColumn  { font-size: 12px;}
+.ui-list-options {font-size: 12px;}
+#jobListTable , #jobListTable a {font-size: 12px}
+#resultList .resultNumber {font-size: 12px}
+.resultNumber, .resultPages{color: @headingcolor;}
+.jobActions .label {color: @headingcolor;}
+#productTable {font-size: 12px}
+
+label { font-size: 14px; color: @headingcolor;}
+input, select, .ui-select {font-size: 12px}
+
+a, a:visited {color: @linkcolor; text-decoration: none}
+a:hover{text-decoration: underline}
+
+.optional {font-style: italic}
+.hint {font-size: 11px; color: #999}
+.jobDate {font-size: 11px;}
+
+/* =============================================================================
+   Utility 
+   ========================================================================== */
+   
+ /*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+.clear {clear: both}
+
+/* =============================================================================
+   Main 
+   ========================================================================== */
+
+#headerWrapper {width: 100%; background: url("@{structure}header_background.jpg") repeat-x; height:141px;}
+#mainHeader{  padding: 10px 20px 0 20px; margin: 0 auto; width: 940px; height: 131px;
+	#userAccount {float: right;
+		&.white, &.white a {color: #fff;}
+		a {text-decoration: underline}
+		#userLoginCompany {padding-right: 15px; border-right: 1px solid #7FA5CD;}
+		a.loginLinks {padding-left: 5px}
+	}
+	
+	h1 { margin:0; height: 80px; width: 600px; background: ; text-indent: -999em; background: url("@{placeholder}client_banner.png") no-repeat left center}
+	
+	#primaryNavigation  ul { .horizontalNavigation; margin-top: 13px;
+		li { background: url("@{structure}navigation_tabs.png") no-repeat; height: 37px; border-bottom: 1px solid @bodyborder;
+			a{ font-size: 14px; color: @headingcolor; font-weight: bold; padding-left: 35px; padding-right: 10px; width: 77px; margin-top: 2px;
+				&:hover {text-decoration: none}	
+			}
+			&.current {background-position: 1px -37px;
+				border-bottom: 1px solid #F9F9F9;
+			}
+			&#transportNav {background-position: -121px 0;
+				a {width: 78px; padding-left: 43px; padding-right: 2px;}
+			}
+			&#transportNav.current {background-position: -121px -37px;}
+			
+			&#warehouseNav {background-position: -244px 0;
+				a {width: 84px; padding-left: 38px; padding-right: 7px;}
+			}
+			&#warehouseNav.current {background-position: -244px -37px;}
+			
+			&#reportsNav {background-position: -373px 0;
+				a {width: 54px;}
+			}
+			&#reportsNav.current{background-position: -373px -37px;}
+			
+			&#invoicesNav {background-position: -472px 0;
+				a {width: 57px; padding-left: 33px; padding-right: 12px;}
+			}
+			&#invoicesNav.current {background-position: -472px -37px;}
+			
+			&#adminNav {background-position: -573px 0;
+				a {width: 43px;}
+			}
+			&#adminNav.current {background-position: -573px -37px;}
+		}
+	}
+}
+#searchWrapper { background: #F9F9F9; width: 100%; border-bottom: 1px solid @bodyborder;}
+#searchNavigation{ padding: 15px 20px; margin: 0 auto; width: 920px;
+	form { width: 400px; float: left;
+		#searchNav {background: url("@{structure}searchbar_background.png") no-repeat; border: none; height: 31px; line-height: 31px; width: 270px; padding: 0; float: left; padding-left: 10px; outline: none; color: #999;}
+		#searchNavButton {background: url("@{element}buttons.png") no-repeat; border: none; height: 31px; width: 118px; outline: none; text-indent: -999em;  padding:0;}
+	}
+	#newJob {float: right; background: url("@{element}buttons.png") no-repeat 0 -31px; height: 31px; width: 111px; text-indent: -999em}
+	#newOrder {float: right; background: url("@{element}buttons.png") no-repeat 0 -62px; height: 31px; width: 125px; text-indent: -999em; margin-left: 10px;}
+}
+#contentWrapper{margin: 0 auto; width: 960px;}
+
+footer {width: 960px; margin: 0 auto;}
+
+#main {  padding: 0 20px;
+	&.twoColumn{ width: 661px; float: left; padding: 0 20px; border-right: 1px solid @bodyborder;}
+	#breadcrumbs {margin: 10px 0; 
+		&:before, &:after {	content: ""; display: table; }
+		&:after {clear: both;}
+		li {float: left}
+	}
+}
+	/*		JOB BOOKING			*/
+
+.jobBooking {
+	.notificationArea{
+		#successBody{ background: url("@{structure}success_area_background.jpg") repeat-y; width: 662px;
+			h3{margin-top: 0}
+			#successInfo{ width: 300px; float: left; padding: 10px  20px 10px 164px; color: #000;  background: url("@{element}success_booking.png") no-repeat 28px 10px;
+				#successForm{
+					label {display: block}
+					#sendBookingReference {background: url("@{element}buttons.png") no-repeat -100px -151px; height: 27px; width: 55px; text-indent: -999em; border: none;}
+					input[type="text"] {background: url("@{element}form.png") no-repeat 0 -24px; width: 210px; height: 22px; padding-left: 10px; line-height: 22px; margin-top: 6px; display: inline-block; border: none;
+						&.autocomplete {background-position: 0 -48px; color: #999;}
+					}
+				}
+			}
+			#newJobActions{ float: left; text-align: center; padding: 0 15px;
+				ul{
+					li{float: left; height: 30px; width: 35px;
+						a{height: 30px; width: 35px; margin: 6px 0; background: url("@{element}icons.png") no-repeat; display: block; border-right: 1px solid @bodyborder;
+							&.jobConsignment{background-position: 0 -210px;}
+							&.jobLabels{background-position: 0 -180px;}
+							&.duplicateJob{}
+							&.editJob{background-position: 0 -30px; border: none}
+						}
+					}
+				}
+			}
+		}
+		#successHeader { background: url("@{structure}success_area_header.jpg") repeat-y; width: 662px; height: 10px}
+		#successFooter { background: url("@{structure}success_area_footer.jpg") repeat-y; width: 662px; height: 10px}
+	}
+	
+	.notificationArea{
+		#errorBody{ background: url("@{structure}error_area_background.jpg") repeat-y; width: 662px; padding: 10px 0;
+			#errorInfo{ background: url("@{element}error.png") no-repeat 25px 0; padding-left: 70px;
+				h3{margin: 0}
+				ul{list-style: disc; margin: 5px 0; margin-left:15px;}
+			}
+		}
+		#errorHeader { background: url("@{structure}error_area_header.jpg") repeat-y; width: 662px; height: 10px}
+		#errorFooter { background: url("@{structure}error_area_footer.jpg") repeat-y; width: 662px; height: 10px}
+	}
+	
+	#jobForm {
+		fieldset {margin: 0; padding:20px 0px 10px 10px; border: none;
+			&.bordered {padding: 10px; border: 1px solid @bodyborder; border-right:none; border-left:none;
+				.formRow {margin-bottom: 0;}
+			}
+			&.submit{padding: 35px 10px 15px 10px;
+				.formRow{
+					#createNewJob { background: url("@{element}buttons.png") no-repeat 0 -93px; height: 31px; width: 130px; margin: 0; padding: 0;text-indent: -999em; border: none; float: left;}
+					span{line-height: 31px; margin-left: 5px;}
+				}
+			}
+		}
+		
+		.formRow{ *zoom: 1; margin-bottom: 20px;
+			&.twoColumn{
+				.formColumn{ width: 320px; float: left;}
+			}
+			&:before, &:after {	content: ""; display: table; }
+			&:after {clear: both;}
+			.formColumn {
+				&.shared {
+					&:before, &:after {	content: ""; display: table; }
+					&:after {clear: both;}
+					.formElement {float: left; margin-right: 10px;
+						&.delete { margin-right: 0;}
+						&.error.state{margin-right: 4px;}
+					}
+				}
+				&.paymentDetails {
+					.formElement{height: 31px; line-height: 31px; float: left}
+					.ui-select {margin-top: 0;}
+				}
+			}
+			&.productTable{
+				.formColumn{margin-bottom:10px;  clear: both; 
+				}
+			}
+			#addProduct { background: url("@{element}buttons.png") no-repeat 0 -124px; height: 27px; width: 159px; text-indent: -999em; display: block; margin-top: 15px;}
+			#productTemplate{display:none}
+			.formElement {
+				&.error{ 
+					input[type="text"],.ui-file { .box-shadow(0 0 5px 2px #FF7575); behavior: url(/css/PIE.htc); padding-right: 0px;	 }
+					label { color: @errorcolor;}
+					.ui-select-label {color: @bodycolor}
+					.ui-select {  background: url("@{element}form.png") no-repeat 0 -192px;  height: 36px;  line-height: 36px; width: 216px; padding-left: 16px; margin-top: -6px; margin-left:-6px; color: @bodycolor;
+						&.medium {background-position: 0px -264px; width: 110px;}
+						&.small {background-position: -126px -264px; width: 84px;}
+					}
+					input[type="text"].autocomplete {.box-shadow(none); margin-top: -6px; background: url("@{element}form.png") no-repeat 0 -228px; height: 36px;  line-height: 36px; width: 216px; padding:0; padding-left: 16px; margin-left:-6px;
+					}
+					.ui-radio {	width: 29px; height: 29px; background: url("@{element}form.png") no-repeat -29px -336px;  vertical-align: -9px; margin-left: -6px;  margin-top: -6px;
+						&.ui-checked {background-position: 0 -336px;}
+					}
+					.ui-checkbox {	width: 34px; height: 34px; background: url("@{element}form.png") no-repeat -58px -336px; vertical-align: -12px; margin-left: -6px; margin-top: -6px;
+						&.ui-checked {background-position: -92px -336px}
+					}				
+					&.product input[type="text"].autocomplete {background-position: 0 -300px; width: 167px; margin-top: -6px;}
+					&.otherPays label {padding-right:5px;}
+					&.isDangerous {margin-right: 4px;}
+					
+				}
+				label {display: block; margin-bottom: 5px}
+				&.inline { margin-right: 15px; display: inline-block;
+					.ui-select, input[type="text"], .ui-radio, .ui-checkbox, span {display: inline-block; float: none; }
+					label {display: inline}
+				}
+				&.product{width: 170px; 
+					.autocomplete{width: 161px; background: url("@{element}form.png") no-repeat 0 -144px; }
+				}
+				&.quantity, &.pallets,&.cubic, &.weight{width: 65px}
+				&.dangerous {width: 114px;
+					label{margin-bottom:0;}
+				}
+			
+				&.delete {margin-top: 7px;
+					a.delete { width: 11px; height: 11px; background: url("@{element}tips.png") no-repeat -9px -66px; float: left;}
+				}
+				&.collectHeading label{ font-size: 16px; color: @headingcolor; padding-left: 40px; background: url("@{element}icons.png") no-repeat 0px -90px; font-weight: bold; height: 30px; line-height: 30px;
+					#deliveryArrow{background: url("@{element}icons.png") no-repeat 0px -150px; float: right; width: 35px; height: 30px; margin-right: 30px;}
+				}
+				&.deliverHeading label {font-size: 16px; color: @headingcolor; padding-left: 40px;  font-weight: bold; height: 30px; line-height: 30px; background: url("@{element}icons.png") no-repeat 0px -120px; }
+
+				#frecuencyEndText{margin-right: 5px}
+				
+				.otherAccount.hidden{display:none}
+				&.frequency{height: 36px; line-height: 36px;}
+			}
+			#specialInstructions { width: 628px; padding: 10px; min-height: 80px; resize: vertical; border: 1px solid @bodyborder;}
+			
+			.hint{display: block; margin-top: 3px}
+			.tip {display: inline-block; width: 28px; height: 28px; background: url("@{element}tips.png") no-repeat; vertical-align: -10px;
+				&:hover { background-position: 0 -28px;}
+			}
+			.tipContent {display: none}
+		}
+	}
+}
+
+/*			FORM ELEMENTS		*/
+
+.ui-list-options, .ui-autocomplete{ border: 1px solid @bodyborder; background: #fff; width: 200px;
+	li { padding: 10px 5px; margin: 3px; 
+		&:hover, &.ui-hover {background: #E9F7FC; }
+		a{color: #000!important;}
+		a:hover {background: none!important; text-decoration: none; border: none; font-weight: normal;}
+	}
+}
+
+.ui-select { background: url("@{element}form.png") no-repeat; width: 210px; height: 24px; padding-left: 10px; line-height: 24px; display: inline-block; outline: none;
+	.ui-list-options {display: none}
+	&.small {background-position: 0px -96px; width: 78px;}
+	&.medium {background-position: -78px -120px; width: 104px;}
+	&.tiny {background-position: -87px -168px; width: 42px;}
+}
+.ui-radio {	width: 17px; height: 17px; background: url("@{element}form.png") no-repeat -61px -120px;  vertical-align: -4px; outline: none;
+	&.ui-checked {background-position: -44px -120px}
+}
+.ui-checkbox {	width: 22px; height: 22px; background: url("@{element}form.png") no-repeat -22px -120px; vertical-align: -6px; outline: none;
+	&.ui-checked {background-position: 0 -120px}
+}
+
+input[type="text"] {background: url("@{element}form.png") no-repeat 0 -24px; width: 210px; height: 22px; padding-left: 10px; line-height: 22px;  display: inline-block; border: none;
+	&.autocomplete {background-position: 0 -48px; outline: none;}
+	&.date {background-position: 0 -72px; width: 94px;}
+	&.time {background-position: -104px -72px; width: 94px;}
+	&.postcode {background-position: -88px -96px; width: 110px;}
+	&.small {background-position: 0 -168px; width: 55px;}
+	&.tiny {background-position: -171px -144px; width: 24px;}
+	&.large {background-position: 0 -370px; width: 328px;}
+}
+
+.ui-file-wrapper {margin-bottom: 25px; clear: both;}
+input[type="file"] {width: 320px}
+.ui-file, input[type="file"] { height: 24px; padding-left: 10px; line-height: 24px; top: 3px}
+.ui-file { background: url("@{element}form.png") no-repeat 0 -24px; width: 210px;}
+.ui-file-button {width: 100px; height: 27px; margin-left: 10px;  background: url("@{element}buttons.png") no-repeat 0 -151px; border: none; float: left; outline: none}
+	
+.ui-file-list{ margin: 10px 0; clear: both;
+	&:before, &:after {	content: ""; display: table; }
+	&:after {clear: both;}
+	li { float: left; margin-bottom: 5px; padding: 5px 10px; border: 1px solid #BCE4FA; background: #F8FCFE; height: 18px; clear: left;
+		span.ui-file-name { padding-left: 25px; background: url("@{element}tips.png") no-repeat -6px -209px; float: left; break-word: no-break;
+		&.pdf {background-position: -6px -81px; }
+	}
+	a.ui-file-delete {float: right; width: 10px; height: 10px; background: url("@{element}tips.png") no-repeat -9px -56px; float: left; margin: 3px 0 0 10px;}
+	}
+}
+.tip {display: inline-block; width: 28px; height: 28px; background: url("@{element}tips.png") no-repeat; vertical-align: -10px;
+	&:hover { background-position: 0 -28px;}
+}
+.tipContent {display: none}
+
+#tooltip-hover {position: absolute;
+	.tooltip-header{ height: 13px; width: 190px; background: url("@{structure}tooltip_header.png") no-repeat; }
+	.tooltip-body{ width: 140px; background: url("@{structure}tooltip_body.png") repeat-y; padding: 10px 25px; }
+	.tooltip-footer{ height: 13px; width: 190px; background: url("@{structure}tooltip_footer.png") no-repeat; }
+}
+
+/*		LEFT COLUMN			*/
+
+#leftColumn {width: 218px; float: left; padding:0 20px; padding-top: 20px; 
+	h3{margin-top: 0}
+	ul{
+		li{	border-top: 1px solid @bodyborder; width: 220px;
+			.jobBorder{border-left: 4px solid; border-right: 2px solid; padding: 10px 0px 10px 5px}
+			&.last {border-bottom: 1px solid @bodyborder;}
+			&.booked {
+				.jobBorder{ border-color: @booked}
+			}
+			&.new {
+				background-color:#EEF7E2;
+			}
+			&.confirmed {
+				.jobBorder{ border-color: @confirmed}
+			}
+			&.collected {
+				.jobBorder{ border-color: @collected}
+			}
+			&.delayed {
+				.jobBorder{ border-color: @delayed}
+			}
+			&.delivered {
+				.jobBorder{ border-color: @delivered}
+			}
+			&.pod {
+				.jobBorder{ border-color: @pod}
+			}
+			&.even {background-color: #F7F8F9;}
+			
+			.jobLink{  color: @bodycolor; width: 130px; display: inline-block; height: 45px;
+				&:hover {text-decoration: none;}
+				h5 {margin: 0}
+				.jobDescription{ overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%}
+			}
+			.duplicateJob, .editJob { height: 30px; width: 35px; display: inline-block; margin: 6px 0; background: url("@{element}icons.png") no-repeat; }
+			.duplicateJob {border-right: 1px solid @bodyborder;}
+			.editJob{ background-position: 0 -30px;
+				&.disabled {background-position: 0 -60px;}
+			}
+		}
+	}
+}
+
+
+
+
+/*		JOB LISTING			*/
+
+.jobListing {
+
+	h1.searchTerm {margin-bottom: 5px}
+	#alsoResults {margin-bottom: 30px}
+
+
+	#jobListTable{ width:920px; border-top: 1px sold @bodyborder;
+		.tableRow{width:920px; border-bottom: 1px solid #E4E4E4; clear: both;
+			&:before, &:after {	content: ""; display: table; }
+			&:after {clear: both;}
+			&.odd {background-color: #F7F8F9;}
+			&.selected {background-color: #EEF7E2}
+			&.header {background-color: #D2D3D3;
+				.tableColumn {border-right: 1px solid #E8EBED; font-weight: bold;
+					&.select{background-color: #E6E7E8}
+					&.job{padding-left: 13px;}
+					
+					.arrow { display: inline-block; width: 5px; height: 8px; background: url("@{element}tips.png") no-repeat 0 -103px;}
+					.tip { margin-top: -6px; margin-left: 12px;}
+				}
+			}
+			&.body{
+				.job{border-left: 3px solid; }
+				&.booked .job{border-left-color: @booked;}
+				&.confirmed .job{border-left-color: @confirmed;}
+				&.collected .job{border-left-color: @collected;}
+				&.delayed .job{border-left-color: @delayed;}
+				&.delivered .job{border-left-color: @delivered;}
+				&.pod .job{border-left-color: @pod;}
+				
+				.recurring {width: 10px; height: 10px; display: inline-block; background: url("@{element}tips.png") no-repeat -5px -103px;}
+				
+				.status{padding: 8px 10px; height: 45px-16; background: url("@{element}arrows.png") no-repeat; }
+				.status span {display: block; background: url("@{element}icons.png") no-repeat; width: 36px; height: 29px; margin: 0 auto; }
+				&.booked .status { background-position: right 20px;
+					span{background-position: 3px -239px;}
+				}
+				&.confirmed .status { background-position: right -10px;
+					span{background-position: 0 -268px;}
+				}
+				&.collected .status { background-position: right -39px;
+					span{background-position: 0 -90px;}
+				}
+				&.delayed .status { background-position: right -67px;
+					span{background-position: 0 -327px;}
+				}
+				&.delivered .status { background-position: right -94px;
+					span{background-position: 0 -120px;}
+				}
+				&.pod .status { background-position: right -124px;
+					span{background-position: 0 -297px; width: 36px; height: 29px; }
+				}
+				
+				.select{padding: 13px 10px; height: 45px-26;
+					.ui-checkbox{ width: 22px; height: 22px; background: url("@{element}form.png") no-repeat -65px -168px; outline: none;
+						&.ui-checked {background-position: 0 -120px}
+					}
+				}
+			}
+
+			.tableColumn{ padding: 15px 10px; float: left; border-right: 1px solid @bodyborder; height: 45px-30;
+				&.job {width: 99px - 23;}
+				&.date{width: 98px - 20;}
+				&.reference{width: 83px - 20;}
+				&.collect{width: 159px - 20;}
+				&.deliver{width: 142px - 20;}
+				&.quantity{width: 59px - 20;}
+				&.weight{width: 49px - 20;}
+				&.pallets{width: 59px - 20;}
+				&.pod{width: 56px - 20;}
+				&.status{width: 68px - 20;}
+				&.select{width: 38px - 20; border-right: none;}
+
+			}
+		}
+	}
+
+	#resultList { border-top: 1px solid @bodyborder;  border-bottom: 3px solid #999; padding: 10px 0; padding-top: 7px; position: relative;
+		&.booked {border-bottom-color: @booked;}
+		&.confirmed {border-bottom-color: @confirmed;}
+		&.collected {border-bottom-color: @collected;}
+		&.delayed {border-bottom-color: @delayed;}
+		&.delivered {border-bottom-color: @delivered;}
+		&.pod {border-bottom-color: @pod;}
+				
+		li {float: left; padding: 0 13px 0 35px; border-left: 1px solid @bodyborder; background: url("@{element}icons.png") no-repeat; height: 20px; line-height: 20px;
+			&.all {padding-left: 20px; border: none; background-image: none;}
+			&.booked {background-position: 0 -420px;}
+			&.booked.current {background-position: 0 -540px;}
+			&.confirmed {background-position: 0 -389px;}
+			&.confirmed.current {background-position: 0 -570px;}
+			&.collected {background-position: 0 -362px;}
+			&.collected.current {background-position: 0 -598px;}
+			&.delayed {background-position: 0 -451px;}
+			&.delayed.current {background-position: 0 -627px;}
+			&.delivered {background-position: 0 -480px;}
+			&.delivered.current {background-position: 0 -657px;}
+			&.pod {background-position: 0 -509px;}
+			&.pod.current {background-position: 0 -685px;}
+			&.current a {cursor: normal; color: @bodycolor; font-weight: bold}
+		}
+		
+		#marker {width: 10px; height: 5px; position: absolute; bottom: 0px; display: block;  background: url("@{element}arrows2.png") no-repeat; left: 36px}
+		&.booked #marker {background-position: 0 -7px; left: 140px}
+		&.confirmed #marker {background-position: 0 -14px; left: 277px}
+		&.collected #marker {background-position: 0 -21px; left: 423px}
+		&.delayed #marker {background-position: 0 -28px; left: 559px}
+		&.delivered #marker {background-position: 0 -35px; left: 696px}
+		&.pod #marker {background-position: 0 -42px; left: 826px}
+	}
+
+	#filterResults { padding: 20px 10px; background-color: #F8FCFE;  line-height: 27px; height: 27px;
+		h3{display: inline; padding-left: 30px; background: url("@{element}tips.png") no-repeat -2px -121px; }
+		#filterSearch {background: url("@{element}buttons.png") no-repeat 0 -178px; height: 27px; padding:0; width: 62px; text-indent: -999em; display: inline-block; vertical-align: 1px; margin-right:5px; border: none;}
+		#fieldWrapper {display: inline-block; padding: 0 10px; border: 1px solid @bodyborder; border-top: none; border-bottom: none; margin: 0 10px;padding-top:2px;}
+		.date {margin: 0 5px}
+		.ui-select {vertical-align: 1px}
+	}
+
+	.pagination { padding: 10px; border: 1px solid @bodyborder; border-right: none; border-left: none; background-color: #F5F5F5; margin-bottom: 15px;
+		&.bottom {margin-top: 15px;}
+		.resultNumber, .resultsPerPage {float: left; height: 24px; line-height: 24px;}
+		.resultPages {float: right;}
+		.resultNumber {padding-right: 10px; border-right: 1px solid @bodyborder; }
+		.resultsPerPage {padding-left: 10px; width: 300px;
+			.tiny {  margin-left: 5px}
+		}
+		.resultPages{  height: 27px; line-height: 27px;
+			span {vertical-align: 7px }
+			.tiny {  margin-right: 5px; vertical-align: 8px}
+			.button {display: inline-block; width: 64px; height: 27px; background: url("@{element}buttons.png") no-repeat; border: none; padding: 0}
+			.next {background-position: 0 -205px; margin-left: 5px}
+			.previous {background-position: -62px -178px;  margin-right: 5px}
+		}
+	}
+
+	.jobActions { margin-bottom: 5px; clear: both;
+		&.bottom {margin-top: 5px;  margin-bottom: 0px;
+			.listWrapper { padding-bottom: 0; padding-top: 8px; background-position: 227px -151px;
+				&.collapsed {background-position: 21px -151px;}
+			}
+			.label {margin-top: 8px;}
+		}
+		.listWrapper {float: right;  height: 31px; padding-bottom: 8px;  background: url("@{element}tips.png") no-repeat  227px -112px;
+			&.collapsed {background-position: 22px -112px }
+			&.collapsed .top{ background-position: -128px -31px; }
+			&.collapsed ul {display: none;}
+		}
+		.label {float: right; width: 80px; height: 31px; margin-right: 10px;}
+		.top{ height:31px; width: 17px; background: url("@{element}buttons.png") no-repeat -111px -31px; float: left }
+		ul {float: left;}
+		ul li{ float: left; background: url("@{element}buttons.png") no-repeat -118px 0; height:31px; width:41px;
+			a {display: block; height: 29px; width: 35px; margin: 0 auto; margin-top: 2px; background: url("@{element}icons.png") no-repeat;}
+			&.jobConsignment a{ background-position: 0 -210px;}
+			&.jobLabels a{background-position: 0 -180px;}
+			&.pod a{ background-position: 0 -297px;}
+			&.duplicateJob a{}
+			&.editJob a{background-position: 0 -30px;}
+			&.editJob.disabled a{ background-position: 0 -60px;}
+		}
+		.ui-checkbox {background: url("@{element}form.png") no-repeat -183px -331px; width: 37px; height:31px; float: left;
+			&.ui-checked {background-position: -183px -300px;}
+		}
+	}
+}
+
+/*		JOB DETAILS				*/
+
+
+.jobDetails {
+	h1 {float: left; width: 550px;}
+	h1 span {font-weight: normal}
+	#jobActions {float: right; width: 280px; height: 30px; margin-top: 30px;
+		li {float: left; padding: 0 5px; border-right: 1px solid @bodyborder;
+			a {display: block; height: 30px; width: 35px;  background: url("@{element}icons.png") no-repeat 0 0;}
+			&.jobConsignment a{ background-position: 0 -210px;}
+			&.jobLabels a{background-position: 0 -180px;}
+			&.pod a{ background-position: 0 -297px;}
+			&.pod.disabled a{ background-position: 0 -741px;}
+			&.duplicateJob a{}
+			&.editJob a{background-position: 0 -30px;}
+			&.editJob.disabled a{ background-position: 0 -60px;}
+			&.print {border: none}
+			&.print a{background-position: 0 -710px;}
+		}
+	}
+	
+	#jobMetaData { padding: 20px 15px; border: 1px solid @bodyborder; border-right: none; border-left: none; background-color: #F7F8F9; margin-bottom: 30px; clear: both;
+		.dataField {float: left; margin-right: 40px;}
+	}
+	
+	#deliveryDetails { padding: 20px 5px; border: 1px solid @bodyborder; border-right: none; border-left: none; margin-bottom: 30px;
+		.module {float: left; padding: 0 10px;
+			h4 {background: url("@{element}icons.png") no-repeat 0px -90px; padding-left: 40px; height: 30px; line-height: 30px; margin: 0px; margin-bottom: 15px}
+			&#collectFrom {width: 315px-20; }
+			&#deliverTo {width: 250px-20;
+				h4 {background-position: 0px -120px; }
+			}
+			#arrow{background: url("@{element}icons.png") no-repeat 0px -150px; float: right; width: 35px; height: 30px; margin-right: 30px;}
+			&#specialInstructions { width: 275px-20; }
+			&#specialInstructions h4 {background-image: none; padding: 0}
+			
+			strong {font-size: 16px;}
+			p {line-height: 20px; margin: 0;}
+		}
+	}
+	
+	#jobStatus{ float: left; width: 550px; margin-bottom: 30px; background-color: #F7F8F9;
+		#statusChart {height: 132px; width: 100%;
+			.statusType { float: left; width: 109px; border-bottom: 1px solid #fff;  border-right: 1px solid #fff; background-color: #F0F1F4; padding-top: 21px;
+				&#statusPOD {border-right: none;}
+				div.statusTitle {text-align: center; padding: 10px; background-color: #D2D3D3; color: #fff;}
+				&#statusBooked  div.statusTitle{background-color: @booked; }
+				&#statusConfirmed  div.statusTitle{background-color: @confirmed; }
+				&#statusCollected  div.statusTitle{background-color: @collected; }
+				&#statusDelivered  div.statusTitle{background-color: @delivered; }
+				&#statusPOD div.statusTitle { background-color: @pod;}
+				&.disabled  div.statusTitle{ background-color: #D2D3D3 !important;}
+				div.statusIcon {width: 60px; height: 47px; background: url("@{element}bigIcons.png") no-repeat; margin: 0 auto; margin-bottom: 21px}
+				&#statusBooked  div.statusIcon{background-position: 0 0 }
+				&#statusBooked.disabled  div.statusIcon{background-position: 0 -47px }
+				&#statusConfirmed  div.statusIcon{background-position: -60px 0; }
+				&#statusConfirmed.disabled  div.statusIcon{background-position: -60px -47px; }
+				&#statusCollected  div.statusIcon{background-position: -120px 0; }
+				&#statusCollected.disabled  div.statusIcon{background-position: -120px -47px }
+				&#statusDelivered  div.statusIcon{background-position: -240px 0; }
+				&#statusDelivered.disabled  div.statusIcon{background-position: -240px -47px; }
+				&#statusPOD div.statusIcon { background-position: -300px 0;}
+				&#statusPOD.disabled div.statusIcon { background-position: -300px -47px;}
+			}
+			#statusMarker {width: 549px; height: 5px; border-top: 4px solid @booked; clear: both; background: url("@{element}arrows3.png") no-repeat 0px 0px;}
+			&.booked{
+				.statusType#statusBooked {border-bottom-color: @booked}
+				#statusMarker {border-top-color:@booked; background-position: 45px -37px; }
+			}
+			&.confirmed{
+				.statusType#statusConfirmed {border-bottom-color: @confirmed}
+				#statusMarker {border-top-color:@confirmed; background-position: 157px -30px; }
+			}
+			&.collected{
+				.statusType#statusCollected {border-bottom-color: @collected}
+				#statusMarker {border-top-color:@collected; background-position: 269px -23px}
+			}
+			&.delivered{
+				.statusType#statusDelivered {border-bottom-color: @delivered}
+				#statusMarker {border-top-color:@delivered; background-position: 377px -9px;}
+			}
+			&.POD{
+				.statusType#statusPOD {border-bottom-color: @pod}
+				#statusMarker {border-top-color:@pod; background-position: 489px -2px;}
+			}
+		}
+		h3 {background: url("@{element}icons.png") no-repeat 0px -90px; padding-left: 40px; height: 30px; line-height: 30px; margin-left: 10px;}
+		#legTable { width: 550px;
+			.leg.first {border-top: 1px solid @bodyborder;}
+			.leg.current { font-weight: bold}
+			.leg { border-bottom: 1px solid @bodyborder; 
+				&:before, &:after {	content: ""; display: table; }
+				&:after {clear: both;}
+				.legData{ float: left;  }
+				.legLocations {width: 205px - 20; padding: 20px 10px; }
+				.legInfo {width: 185px - 10; padding: 20px 0; padding-right: 10px;}
+				.legProgress {width: 100px; padding: 20px 0;
+					.progressWrapper {position: relative; overflow: hidden; height: 10px}
+					.background {width: 100px; top: 0; left: 0; position: absolute; height: 10px; background-color: #D2D3D3}
+					.progressBar { width: 100px; top: 0; left: -30px; position: absolute; height: 10px;  background-color: @collected}
+				}
+				.legProgressStatus {width: 60px;
+					.statusIcon {height: 22px; width: 20px; background: url("@{element}tips.png") no-repeat -4px -160px; margin: 0 auto; margin-top: 12px}
+				} 
+				&.current .legProgressStatus .statusIcon { background-position:  -4px -183px}
+				.legTBC {width: 355px; font-style: italic; padding: 20px 0; padding-left: 35px; }
+			}
+		}
+	}
+	
+	#notifications{ float: right; width: 340px; margin-bottom: 30px;
+		h2 {float: left; width: 250px; margin-top: 5px}
+		.ui-checkbox {float: right; width: 84px; height: 28px; background-position: -220px -28px; margin-top: 5px;
+			&.ui-checked {background-position: -220px 0;}
+		}
+		label {display: block; clear: both; margin-bottom: 10px;}
+	}
+	
+	#liveTracking{ float: right; width: 340px; border: 1px solid @bodyborder; border-right: none; border-left: none;
+		#jobRealTimeData {padding: 20px 0; border-top: 1px solid #F0F1F4;
+			.liveData{float: left; width: 113px; text-align: center; line-height: 20px} 
+			.liveData.vehicle {text-align: left}
+			#vehicle {font-weight: bold}
+			#speed {font-weight: bold; font-size: 25px}
+			#distance {font-weight: bold; font-size: 25px}
+		}
+	}
+	
+	#products { clear: both; width: 920px; margin-bottom: 30px;
+		#productTable {
+			.tableRow {  border-bottom: 1px solid @bodyborder;
+				&:before, &:after {	content: ""; display: table; }
+				&:after {clear: both;}
+				.tableColumn {float: left; padding: 15px 10px; border-right: 1px solid @bodyborder;  }
+				.code {width: 232px - 20; }
+				.description {width: 283px - 20; }
+				.quantity, .pallets, .cubic, .weight {width: 100px - 20; }
+				.weight {border: none}
+				.total {width: 517px - 20; text-align: right; border: none; font-weight: bold}
+				&.header .tableColumn{ font-weight: bold; background: #D2D3D3; }
+				&.odd  .tableColumn{ background: #F7F8F9}
+				&.header {  border-top: 1px solid @bodyborder; }	
+			}
+		}
+	}
+	
+	#documents{
+		ul#documentList{ margin: 10px 0; clear: both; margin-bottom: 30px;
+			&:before, &:after {	content: ""; display: table; }
+			&:after {clear: both;}
+			li { float: left; margin-bottom: 5px; padding: 5px 10px; border: 1px solid #BCE4FA; background: #F8FCFE; height: 18px; clear: left;
+				a { padding-left: 25px; background: url("@{element}tips.png") no-repeat -6px -209px; display: block; break-word: no-break; color: @bodycolor}
+				a.pdf{background-position: -6px -81px}
+			}
+		}
+	}
+}
+
